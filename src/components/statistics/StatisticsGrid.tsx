@@ -14,6 +14,11 @@ function StatisticsGrid({
   remaining,
   entries,
 }: StatisticsGridProps) {
+  console.log({
+    currentWeight,
+    progress,
+    remaining,
+  });
   return (
     <div className="grid grid-cols-2 gap-4">
       <StatisticsCard title="Peso actual" value={`${currentWeight} kg`} />

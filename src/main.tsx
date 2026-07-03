@@ -1,19 +1,19 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import App from './App.tsx';
+import App from './App';
 
+import { ProfileProvider } from './context/ProfileContext';
 import { ProgressProvider } from './context/ProgressContext';
 
 import './index.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <BrowserRouter>
+    <ProfileProvider>
       <ProgressProvider>
         <App />
       </ProgressProvider>
-    </BrowserRouter>
-  </StrictMode>
+    </ProfileProvider>
+  </BrowserRouter>
 );

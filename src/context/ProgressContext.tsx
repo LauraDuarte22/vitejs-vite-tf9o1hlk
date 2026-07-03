@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 
-import { user } from '../data/user';
+import { profile } from '../data/profile';
 import { progressEntries } from '../data/progressEntries';
 
 import type { ProgressEntry } from '../types/ProgressEntry';
@@ -73,9 +73,9 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
   // ==========================
   const currentWeight = getCurrentWeight(entries);
 
-  const progress = getProgress(user, entries);
+  const progress = getProgress(profile, entries);
 
-  const remaining = getRemainingWeight(user, entries);
+  const remaining = getRemainingWeight(profile, entries);
 
   const lastWeightChange = getLastWeightChange(entries);
 

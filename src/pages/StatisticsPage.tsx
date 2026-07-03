@@ -3,7 +3,7 @@ import Welcome from '../components/dashboard/Welcome';
 import WeightChart from '../components/statistics/WeightChart';
 import StatisticsGrid from '../components/statistics/StatisticsGrid';
 
-import { user } from '../data/user';
+import { profile } from '../data/profile';
 import { useProgress } from '../hooks/useProgress';
 
 function StatisticsPage() {
@@ -12,7 +12,7 @@ function StatisticsPage() {
   return (
     <MainLayout>
       <section className="space-y-8">
-        <Welcome name={user.name} />
+        <Welcome name={profile.name} />
 
         <WeightChart entries={entries} />
 

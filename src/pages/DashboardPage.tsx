@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import MainLayout from '../layouts/MainLayout.tsx';
 
-import { user } from '../data/user.ts';
+import { profile } from '../data/profile.ts';
 import { useProgress } from '../hooks/useProgress';
 
 import Welcome from '../components/dashboard/Welcome.tsx';
@@ -43,14 +43,14 @@ function DashboardPage() {
   return (
     <MainLayout>
       <section className="space-y-8">
-        <Welcome name={user.name} />
+        <Welcome name={profile.name} />
         <WeightSummary
           currentWeight={currentWeight}
-          goalWeight={user.goalWeight}
+          goalWeight={profile.goalWeight}
           progress={progress}
         />
         <StatsGrid
-          goalWeight={user.goalWeight}
+          goalWeight={profile.goalWeight}
           weeklyChange={lastWeightChange}
           remaining={remaining}
         />

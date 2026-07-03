@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import MainLayout from '../layouts/MainLayout';
 
-import { user } from '../data/user';
+import { profile } from '../data/profile';
 
 import type { ProgressEntry } from '../types/ProgressEntry';
 
@@ -34,7 +34,7 @@ function HistoryPage() {
   return (
     <MainLayout>
       <section className="space-y-8">
-        <Welcome name={user.name} />
+        <Welcome name={profile.name} />
 
         <ProgressHistory
           entries={entries}

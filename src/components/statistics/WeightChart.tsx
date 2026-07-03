@@ -1,5 +1,5 @@
 import type { ProgressEntry } from '../../types/ProgressEntry';
-
+import WeightTooltip from './WeightTooltip';
 import {
   ResponsiveContainer,
   LineChart,
@@ -16,15 +16,18 @@ type WeightChartProps = {
 
 function WeightChart({ entries }: WeightChartProps) {
   const data = [...entries]
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    .map((entry) => ({
-      date: new Date(entry.date).toLocaleDateString('es-CO', {
-        day: 'numeric',
-        month: 'short',
-      }),
-      weight: entry.weight,
-    }));
-  console.log(data);
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  .map((entry) => ({
+    date: new Date(entry.date).toLocaleDateString('es-CO', {
+      day: 'numeric',
+      month: 'short',
+    }),
+    weight: entry.weight,
+    waist: entry.waist,
+    hips: entry.hips,
+    notes: entry.notes,
+  }));
+ 
   if (data.length < 2) {
     return (
       <section className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
@@ -54,31 +57,51 @@ function WeightChart({ entries }: WeightChartProps) {
       <div className="h-72">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+            <CartesianGrid
+              vertical={false}
+              stroke="#f1f5f9"
+              strokeDasharray="4 4"
+            />
 
-            <XAxis dataKey="date" tick={{ fontSize: 12 }} />
+            <XAxis
+              dataKey="date"
+              axisLine={false}
+              tickLine={false}
+              tick={{ fontSize: 12, fill: '#94a3b8' }}
+            />
 
-            <YAxis tick={{ fontSize: 12 }} />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              tick={{ fontSize: 12, fill: '#94a3b8' }}
+            />
+
 
             <Tooltip
-              contentStyle={{
-                borderRadius: 16,
-                border: 'none',
-                boxShadow: '0 8px 30px rgba(0,0,0,.12)',
+              cursor={{
+                stroke: '#ec4899',
+                strokeWidth: 1,
+                strokeDasharray: '5 5',
               }}
+              content={<WeightTooltip />}
             />
 
             <Line
               type="monotone"
               dataKey="weight"
               stroke="#ec4899"
-              strokeWidth={3}
+              strokeWidth={4}
               dot={{
                 r: 5,
                 fill: '#ec4899',
+                stroke: '#fff',
+                strokeWidth: 2,
               }}
               activeDot={{
                 r: 7,
+                fill: '#ec4899',
+                stroke: '#fff',
+                strokeWidth: 3,
               }}
             />
           </LineChart>
