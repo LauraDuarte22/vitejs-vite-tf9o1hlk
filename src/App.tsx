@@ -14,7 +14,7 @@ function App() {
       <Route path="/progress" element={<StatisticsPage />} />
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/logros" element={<AchievementsPage />} />
+      <Route path="/achievements" element={<AchievementsPage />} />
     </Routes>
   );
 }

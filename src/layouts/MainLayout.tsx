@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
-import { House, ChartColumn, ClipboardList, User } from 'lucide-react';
+import { House, ChartColumn, ClipboardList, User,Trophy } from 'lucide-react';
 
 type MainLayoutProps = {
   children: ReactNode;
@@ -10,6 +10,7 @@ const navItems = [
   { to: '/', icon: House },
   { to: '/progress', icon: ChartColumn },
   { to: '/history', icon: ClipboardList },
+  { to: '/achievements', icon: Trophy },
   { to: '/profile', icon: User },
 ];
 
